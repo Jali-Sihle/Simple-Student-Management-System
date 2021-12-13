@@ -1,0 +1,107 @@
+﻿@model SSDES.Models.ADMIN
+
+@{
+    Layout=null;
+}
+
+<head>
+    <title>ITCA Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/favicon_.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor_/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts_/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts_/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor_/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor_/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor_/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor_/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css_/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css_/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('../../bg-01.jpg');">
+            <div class="wrap-login100">
+
+
+                @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="login100-form validate-form">
+                        <span class="login100-form-logo">
+
+                            <img src="~/Student Logo (OFFICIAL) (3.png" class="zmdi zmdi-landscape" style="width:100px;height:100px"/>
+                        </span>
+                        <span class="login100-form-title p-b-34 p-t-27">
+                            ITCA Login
+                        </span>
+                        <div class="wrap-input100 validate-input">
+                            @Html.LabelFor(model => model.USERNAME, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.USERNAME, new { htmlAttributes = new { @class = "input100" } })
+                                @Html.ValidationMessageFor(model => model.USERNAME, "", new { @class = "text-danger" })
+                                <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                            </div>
+                        </div>
+
+                        <div class="wrap-input100 validate-input">
+                            @Html.LabelFor(model => model.PASSWORD, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.PASSWORD, new { htmlAttributes = new { @class = "input100" } })
+                                @Html.ValidationMessageFor(model => model.PASSWORD, "", new { @class = "text-danger" })
+                                <span class="focus-input100" data-placeholder="&#xf191;"></span>
+                            </div>
+                        </div>
+                        <!--
+                        <div >
+                            <a class="txt1" href="#" style="font-size:19px;transform:translate(350%);">
+                                Forgot Password?
+                            </a>
+                        </div>
+                            -->
+                        <div class="container-login100-form-btn">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Login" class="login100-form-btn" style="margin:70px" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+    <div id="dropDownSelect1"></div>
+</body>
+<!--===============================================================================================-->
+<script src="~/vendor_/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor_/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor_/bootstrap/js/popper.js"></script>
+<script src="~/vendor_/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor_/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor_/daterangepicker/moment.min.js"></script>
+<script src="~/vendor_/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="~/vendor_/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="~/js_/main.js"></script>
+

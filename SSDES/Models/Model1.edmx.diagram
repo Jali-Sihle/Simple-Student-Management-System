@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cdeda1e53ced4790b673ef74d34432c8" Name="Diagram1">
+        <EntityTypeShape EntityType="STUDENTWAREHOUSEModel.ADMIN" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="STUDENTWAREHOUSEModel.EXAM_BOOKING" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="STUDENTWAREHOUSEModel.STUDENT_EXAM_RESULTS" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="STUDENTWAREHOUSEModel.STUDENT_INFO" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="STUDENTWAREHOUSEModel.STUDENT_PROJECT_RESULTS" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="STUDENTWAREHOUSEModel.STUDENT_TEST_RESULTS" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <AssociationConnector Association="STUDENTWAREHOUSEModel.FK__EXAM_BOOKI__Stid__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="STUDENTWAREHOUSEModel.FK__STUDENT_EX__Stid__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="STUDENTWAREHOUSEModel.FK__STUDENT_PR__Stid__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="STUDENTWAREHOUSEModel.FK__STUDENT_TE__Stid__2E1BDC42" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

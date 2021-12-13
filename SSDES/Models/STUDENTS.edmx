@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="STUDENT_WAREHOUSEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="EXAM_BOOKING">
+          <Key>
+            <PropertyRef Name="Steb" />
+          </Key>
+          <Property Name="Steb" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EXAM_MODULE_NAME" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="EXAM_NUMBER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EXAM_DATE" Type="date" Nullable="false" />
+          <Property Name="EXAM_TIME" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Stid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STUDENT_EXAM_RESULTS">
+          <Key>
+            <PropertyRef Name="SER_id" />
+          </Key>
+          <Property Name="SER_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EXAM_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EXAM_NUMBER" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="EXAM_MARK" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Stid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STUDENT_INFO">
+          <Key>
+            <PropertyRef Name="Stid" />
+          </Key>
+          <Property Name="Stid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="LAST_NAME" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="GENDER" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="AGE" Type="int" Nullable="false" />
+          <Property Name="ADMISSION_DATE" Type="date" Nullable="false" />
+          <Property Name="COURSE_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COURSE_DURATION" Type="int" Nullable="false" />
+          <Property Name="COURSE_TRAINER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL_ADDRESS" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CONTACT_NUMBER" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="YEAR_IN_COLLEGE" Type="int" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="STUDENT_PROJECT_RESULTS">
+          <Key>
+            <PropertyRef Name="SPR_id" />
+          </Key>
+          <Property Name="SPR_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PROJECT_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PROJECT_MARK" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Stid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="STUDENT_TEST_RESULTS">
+          <Key>
+            <PropertyRef Name="STR_id" />
+          </Key>
+          <Property Name="STR_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TEST_NAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TEST_MARK" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Stid" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__EXAM_BOOKI__Stid__5CD6CB2B">
+          <End Role="STUDENT_INFO" Type="Self.STUDENT_INFO" Multiplicity="1" />
+          <End Role="EXAM_BOOKING" Type="Self.EXAM_BOOKING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT_INFO">
+              <PropertyRef Name="Stid" />
+            </Principal>
+            <Dependent Role="EXAM_BOOKING">
+              <PropertyRef Name="Stid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENT_EX__Stid__36B12243">
+          <End Role="STUDENT_INFO" Type="Self.STUDENT_INFO" Multiplicity="1" />
+          <End Role="STUDENT_EXAM_RESULTS" Type="Self.STUDENT_EXAM_RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT_INFO">
+              <PropertyRef Name="Stid" />
+            </Principal>
+            <Dependent Role="STUDENT_EXAM_RESULTS">
+              <PropertyRef Name="Stid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENT_PR__Stid__2E1BDC42">
+          <End Role="STUDENT_INFO" Type="Self.STUDENT_INFO" Multiplicity="1" />
+          <End Role="STUDENT_PROJECT_RESULTS" Type="Self.STUDENT_PROJECT_RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT_INFO">
+              <PropertyRef Name="Stid" />
+            </Principal>
+            <Dependent Role="STUDENT_PROJECT_RESULTS">
+              <PropertyRef Name="Stid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENT_TE__Stid__2B3F6F97">
+          <End Role="STUDENT_INFO" Type="Self.STUDENT_INFO" Multiplicity="1" />
+          <End Role="STUDENT_TEST_RESULTS" Type="Self.STUDENT_TEST_RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT_INFO">
+              <PropertyRef Name="Stid" />
+            </Principal>
+            <Dependent Role="STUDENT_TEST_RESULTS">
+              <PropertyRef Name="Stid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STUDENT_WAREHOUSEModelStoreContainer">
+          <EntitySet Name="EXAM_BOOKING" EntityType="Self.EXAM_BOOKING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT_EXAM_RESULTS" EntityType="Self.STUDENT_EXAM_RESULTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT_INFO" EntityType="Self.STUDENT_INFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT_PROJECT_RESULTS" EntityType="Self.STUDENT_PROJECT_RESULTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="STUDENT_TEST_RESULTS" EntityType="Self.STUDENT_TEST_RESULTS" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__EXAM_BOOKI__Stid__5CD6CB2B" Association="Self.FK__EXAM_BOOKI__Stid__5CD6CB2B">
+            <End Role="STUDENT_INFO" EntitySet="STUDENT_INFO" />
+            <End Role="EXAM_BOOKING" EntitySet="EXAM_BOOKING" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENT_EX__Stid__36B12243" Association="Self.FK__STUDENT_EX__Stid__36B12243">
+            <End Role="STUDENT_INFO" EntitySet="STUDENT_INFO" />
+            <End Role="STUDENT_EXAM_RESULTS" EntitySet="STUDENT_EXAM_RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENT_PR__Stid__2E1BDC42" Association="Self.FK__STUDENT_PR__Stid__2E1BDC42">
+            <End Role="STUDENT_INFO" EntitySet="STUDENT_INFO" />
+            <End Role="STUDENT_PROJECT_RESULTS" EntitySet="STUDENT_PROJECT_RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENT_TE__Stid__2B3F6F97" Association="Self.FK__STUDENT_TE__Stid__2B3F6F97">
+            <End Role="STUDENT_INFO" EntitySet="STUDENT_INFO" />
+            <End Role="STUDENT_TEST_RESULTS" EntitySet="STUDENT_TEST_RESULTS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="STUDENT_WAREHOUSEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="STUDENT_EXAM_RESULTS">
+          <Key>
+            <PropertyRef Name="SER_id" />
+          </Key>
+          <Property Name="SER_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EXAM_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EXAM_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EXAM_MARK" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Stid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="STUDENT_INFO" Relationship="Self.FK__STUDENT_EX__Stid__36B12243" FromRole="STUDENT_EXAM_RESULTS" ToRole="STUDENT_INFO" />
+        </EntityType>
+        <EntityType Name="STUDENT_INFO">
+          <Key>
+            <PropertyRef Name="Stid" />
+          </Key>
+          <Property Name="Stid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIRST_NAME" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GENDER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AGE" Type="Int32" Nullable="false" />
+          <Property Name="ADMISSION_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="COURSE_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COURSE_DURATION" Type="Int32" Nullable="false" />
+          <Property Name="COURSE_TRAINER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL_ADDRESS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTACT_NUMBER" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YEAR_IN_COLLEGE" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="STUDENT_EXAM_RESULTS" Relationship="Self.FK__STUDENT_EX__Stid__36B12243" FromRole="STUDENT_INFO" ToRole="STUDENT_EXAM_RESULTS" />
+          <NavigationProperty Name="STUDENT_PROJECT_RESULTS" Relationship="Self.FK__STUDENT_PR__Stid__2E1BDC42" FromRole="STUDENT_INFO" ToRole="STUDENT_PROJECT_RESULTS" />
+          <NavigationProperty Name="STUDENT_TEST_RESULTS" Relationship="Self.FK__STUDENT_TE__Stid__2B3F6F97" FromRole="STUDENT_INFO" ToRole="STUDENT_TEST_RESULTS" />
+          <NavigationProperty Name="EXAM_BOOKING" Relationship="STUDENT_WAREHOUSEModel.FK__EXAM_BOOKI__Stid__5CD6CB2B" FromRole="STUDENT_INFO" ToRole="EXAM_BOOKING" />
+        </EntityType>
+        <EntityType Name="STUDENT_PROJECT_RESULTS">
+          <Key>
+            <PropertyRef Name="SPR_id" />
+          </Key>
+          <Property Name="SPR_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PROJECT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PROJECT_MARK" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Stid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="STUDENT_INFO" Relationship="Self.FK__STUDENT_PR__Stid__2E1BDC42" FromRole="STUDENT_PROJECT_RESULTS" ToRole="STUDENT_INFO" />
+        </EntityType>
+        <EntityType Name="STUDENT_TEST_RESULTS">
+          <Key>
+            <PropertyRef Name="STR_id" />
+          </Key>
+          <Property Name="STR_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TEST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TEST_MARK" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Stid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="STUDENT_INFO" Relationship="Self.FK__STUDENT_TE__Stid__2B3F6F97" FromRole="STUDENT_TEST_RESULTS" ToRole="STUDENT_INFO" />
+        </EntityType>
+        <Association Name="FK__STUDENT_EX__Stid__36B12243">
+          <End Role="STUDENT_INFO" Type="Self.STUDENT_INFO" Multiplicity="1" />
+          <End Role="STUDENT_EXAM_RESULTS" Type="Self.STUDENT_EXAM_RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT_INFO">
+              <PropertyRef Name="Stid" />
+            </Principal>
+            <Dependent Role="STUDENT_EXAM_RESULTS">
+              <PropertyRef Name="Stid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENT_PR__Stid__2E1BDC42">
+          <End Role="STUDENT_INFO" Type="Self.STUDENT_INFO" Multiplicity="1" />
+          <End Role="STUDENT_PROJECT_RESULTS" Type="Self.STUDENT_PROJECT_RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT_INFO">
+              <PropertyRef Name="Stid" />
+            </Principal>
+            <Dependent Role="STUDENT_PROJECT_RESULTS">
+              <PropertyRef Name="Stid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STUDENT_TE__Stid__2B3F6F97">
+          <End Role="STUDENT_INFO" Type="Self.STUDENT_INFO" Multiplicity="1" />
+          <End Role="STUDENT_TEST_RESULTS" Type="Self.STUDENT_TEST_RESULTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT_INFO">
+              <PropertyRef Name="Stid" />
+            </Principal>
+            <Dependent Role="STUDENT_TEST_RESULTS">
+              <PropertyRef Name="Stid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="STUDENT_WAREHOUSEEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="STUDENT_EXAM_RESULTS" EntityType="Self.STUDENT_EXAM_RESULTS" />
+          <EntitySet Name="STUDENT_INFO" EntityType="Self.STUDENT_INFO" />
+          <EntitySet Name="STUDENT_PROJECT_RESULTS" EntityType="Self.STUDENT_PROJECT_RESULTS" />
+          <EntitySet Name="STUDENT_TEST_RESULTS" EntityType="Self.STUDENT_TEST_RESULTS" />
+          <AssociationSet Name="FK__STUDENT_EX__Stid__36B12243" Association="Self.FK__STUDENT_EX__Stid__36B12243">
+            <End Role="STUDENT_INFO" EntitySet="STUDENT_INFO" />
+            <End Role="STUDENT_EXAM_RESULTS" EntitySet="STUDENT_EXAM_RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENT_PR__Stid__2E1BDC42" Association="Self.FK__STUDENT_PR__Stid__2E1BDC42">
+            <End Role="STUDENT_INFO" EntitySet="STUDENT_INFO" />
+            <End Role="STUDENT_PROJECT_RESULTS" EntitySet="STUDENT_PROJECT_RESULTS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STUDENT_TE__Stid__2B3F6F97" Association="Self.FK__STUDENT_TE__Stid__2B3F6F97">
+            <End Role="STUDENT_INFO" EntitySet="STUDENT_INFO" />
+            <End Role="STUDENT_TEST_RESULTS" EntitySet="STUDENT_TEST_RESULTS" />
+          </AssociationSet>
+          <EntitySet Name="EXAM_BOOKING" EntityType="STUDENT_WAREHOUSEModel.EXAM_BOOKING" />
+          <AssociationSet Name="FK__EXAM_BOOKI__Stid__5CD6CB2B" Association="STUDENT_WAREHOUSEModel.FK__EXAM_BOOKI__Stid__5CD6CB2B">
+            <End Role="STUDENT_INFO" EntitySet="STUDENT_INFO" />
+            <End Role="EXAM_BOOKING" EntitySet="EXAM_BOOKING" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EXAM_BOOKING">
+          <Key>
+            <PropertyRef Name="Steb" />
+          </Key>
+          <Property Name="Steb" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EXAM_MODULE_NAME" Type="String" Nullable="false" MaxLength="90" FixedLength="false" Unicode="false" />
+          <Property Name="EXAM_NUMBER" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EXAM_DATE" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EXAM_TIME" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Stid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="STUDENT_INFO" Relationship="STUDENT_WAREHOUSEModel.FK__EXAM_BOOKI__Stid__5CD6CB2B" FromRole="EXAM_BOOKING" ToRole="STUDENT_INFO" />
+        </EntityType>
+        <Association Name="FK__EXAM_BOOKI__Stid__5CD6CB2B">
+          <End Type="STUDENT_WAREHOUSEModel.STUDENT_INFO" Role="STUDENT_INFO" Multiplicity="1" />
+          <End Type="STUDENT_WAREHOUSEModel.EXAM_BOOKING" Role="EXAM_BOOKING" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STUDENT_INFO">
+              <PropertyRef Name="Stid" />
+            </Principal>
+            <Dependent Role="EXAM_BOOKING">
+              <PropertyRef Name="Stid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="STUDENT_WAREHOUSEModelStoreContainer" CdmEntityContainer="STUDENT_WAREHOUSEEntities1">
+          <EntitySetMapping Name="STUDENT_EXAM_RESULTS">
+            <EntityTypeMapping TypeName="STUDENT_WAREHOUSEModel.STUDENT_EXAM_RESULTS">
+              <MappingFragment StoreEntitySet="STUDENT_EXAM_RESULTS">
+                <ScalarProperty Name="SER_id" ColumnName="SER_id" />
+                <ScalarProperty Name="EXAM_NAME" ColumnName="EXAM_NAME" />
+                <ScalarProperty Name="EXAM_NUMBER" ColumnName="EXAM_NUMBER" />
+                <ScalarProperty Name="EXAM_MARK" ColumnName="EXAM_MARK" />
+                <ScalarProperty Name="Stid" ColumnName="Stid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENT_INFO">
+            <EntityTypeMapping TypeName="STUDENT_WAREHOUSEModel.STUDENT_INFO">
+              <MappingFragment StoreEntitySet="STUDENT_INFO">
+                <ScalarProperty Name="Stid" ColumnName="Stid" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+                <ScalarProperty Name="AGE" ColumnName="AGE" />
+                <ScalarProperty Name="ADMISSION_DATE" ColumnName="ADMISSION_DATE" />
+                <ScalarProperty Name="COURSE_NAME" ColumnName="COURSE_NAME" />
+                <ScalarProperty Name="COURSE_DURATION" ColumnName="COURSE_DURATION" />
+                <ScalarProperty Name="COURSE_TRAINER" ColumnName="COURSE_TRAINER" />
+                <ScalarProperty Name="EMAIL_ADDRESS" ColumnName="EMAIL_ADDRESS" />
+                <ScalarProperty Name="CONTACT_NUMBER" ColumnName="CONTACT_NUMBER" />
+                <ScalarProperty Name="YEAR_IN_COLLEGE" ColumnName="YEAR_IN_COLLEGE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENT_PROJECT_RESULTS">
+            <EntityTypeMapping TypeName="STUDENT_WAREHOUSEModel.STUDENT_PROJECT_RESULTS">
+              <MappingFragment StoreEntitySet="STUDENT_PROJECT_RESULTS">
+                <ScalarProperty Name="SPR_id" ColumnName="SPR_id" />
+                <ScalarProperty Name="PROJECT_NAME" ColumnName="PROJECT_NAME" />
+                <ScalarProperty Name="PROJECT_MARK" ColumnName="PROJECT_MARK" />
+                <ScalarProperty Name="Stid" ColumnName="Stid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="STUDENT_TEST_RESULTS">
+            <EntityTypeMapping TypeName="STUDENT_WAREHOUSEModel.STUDENT_TEST_RESULTS">
+              <MappingFragment StoreEntitySet="STUDENT_TEST_RESULTS">
+                <ScalarProperty Name="STR_id" ColumnName="STR_id" />
+                <ScalarProperty Name="TEST_NAME" ColumnName="TEST_NAME" />
+                <ScalarProperty Name="TEST_MARK" ColumnName="TEST_MARK" />
+                <ScalarProperty Name="Stid" ColumnName="Stid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EXAM_BOOKING">
+            <EntityTypeMapping TypeName="STUDENT_WAREHOUSEModel.EXAM_BOOKING">
+              <MappingFragment StoreEntitySet="EXAM_BOOKING">
+                <ScalarProperty Name="Stid" ColumnName="Stid" />
+                <ScalarProperty Name="EXAM_TIME" ColumnName="EXAM_TIME" />
+                <ScalarProperty Name="EXAM_DATE" ColumnName="EXAM_DATE" />
+                <ScalarProperty Name="EXAM_NUMBER" ColumnName="EXAM_NUMBER" />
+                <ScalarProperty Name="EXAM_MODULE_NAME" ColumnName="EXAM_MODULE_NAME" />
+                <ScalarProperty Name="Steb" ColumnName="Steb" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
